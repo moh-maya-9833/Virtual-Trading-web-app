@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paper Trade Hub - India</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">Paper Trade Hub - India</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dashboard.html">Markets</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="#">Community</a></li>
+      <li><a href="#">Courses</a></li>
+      <li><a href="#">Login</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Master the Indian Markets with Risk-Free Trading!</h1>
+      <a href="dashboard.html" class="cta-button">Start Trading</a>
+    </div>
+  </section>
+
+  <!-- Market Overview -->
+  <section class="market-overview">
+    <h2>Indian Market Overview</h2>
+    <div class="market-data">
+      <div class="market-card">
+        <h3>Nifty 50</h3>
+        <p>18,000.75</p>
+      </div>
+      <div class="market-card">
+        <h3>SENSEX</h3>
+        <p>60,000.50</p>
+      </div>
+      <div class="market-card">
+        <h3>Top Gainer</h3>
+        <p>Reliance +5%</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="search-bar">
+    <input type="text" id="stock-symbol" placeholder="Enter Stock Symbol (e.g., RELIANCE.BSE)">
+    <button id="search-btn">Search</button>
+  </div>
+
+
+
+
+
+  <div class="search-bar">
+
+  </div>
+  
+  <div id="stock-data">
+    <h2>Stock Data</h2>
+    <p><strong>Symbol:</strong> <span id="symbol"></span></p>
+    <p><strong>Price:</strong> ₹<span id="price"></span></p>
+    <p><strong>Change:</strong> ₹<span id="change"></span></p>
+    <p><strong>Volume:</strong> <span id="volume"></span></p>
+  </div>
+  
+  <script>
+    // Replace with your actual Alpha Vantage API key
+    const apiKey = 'I3AHN4QH1NTMKB1O'; 
+  
+    // Event listener for the search button
+    document.getElementById('search-btn').addEventListener('click', function() {
+      const stockSymbol = document.getElementById('stock-symbol').value;
+  
+      // Construct the API URL for fetching real-time stock data
+      const apiUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${stockSymbol}&interval=1min&apikey=${apiKey}`;
+  
+      // Fetch stock data from Alpha Vantage
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          const timeSeries = data['Time Series (1min)'];
+          if (!timeSeries) {
+            alert('Error fetching data: Please check the stock symbol.');
+            return;
+          }
+          
+          const latestTime = Object.keys(timeSeries)[0];
+          const latestData = timeSeries[latestTime];
+  
+          // Display the stock data on the page
+          document.getElementById('symbol').innerText = stockSymbol.toUpperCase();
+          document.getElementById('price').innerText = parseFloat(latestData['4. close']).toFixed(2);
+          document.getElementById('change').innerText = (parseFloat(latestData['4. close']) - parseFloat(latestData['1. open'])).toFixed(2);
+          document.getElementById('volume').innerText = latestData['5. volume'];
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+          alert('Failed to fetch stock data. Please check your connection or the stock symbol.');
+        });
+    });
+  </script>
+  
+  
+  
+
+
+</body>
+</html>

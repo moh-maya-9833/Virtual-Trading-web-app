@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Trading Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+        }
+        .navbar {
+            border-bottom: 1px solid #333;
+        }
+        .sidebar .nav-link {
+            color: #b0b0b0;
+        }
+        .sidebar .nav-link.active {
+            color: #fff;
+            font-weight: bold;
+        }
+        .bg-purple {
+            background-color: #6a1b9a;
+        }
+        .card {
+            border: none;
+            background-color: #2c2c2c;
+            transition: transform 0.2s ease;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .overview-icon {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+        /* Layout Adjustments */
+        .investments-section {
+            position: absolute;
+            right: 5px;
+            top: 80px; /* Position below the navbar */
+            width: 250px; /* Adjusted width for better fit */
+        }
+        .sidebar ul li {
+            margin-bottom: 15px;
+        }
+        /* Remove Footer */
+        footer {
+            display: none;
+        }
+        /* Chatbot Styles */
+        .chat-modal {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background-color: #2c2c2c;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            width: 300px;
+            max-height: 400px;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .chat-header {
+            background-color: #6a1b9a;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chat-body {
+            padding: 10px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+        .chat-input {
+            border: none;
+            padding: 10px;
+            border-top: 1px solid #333;
+            background-color: #1f1f1f;
+            color: #fff;
+        }
+        .user-message {
+            background-color: #007bff;
+            color: white;
+            padding: 8px;
+            border-radius: 10px;
+            margin: 5px 0;
+            max-width: 80%;
+            align-self: flex-end;
+        }
+        .bot-message {
+            background-color: #444;
+            color: white;
+            padding: 8px;
+            border-radius: 10px;
+            margin: 5px 0;
+            max-width: 80%;
+            align-self: flex-start;
+        }
+        .chatbot-image {
+            position: fixed;
+            bottom: 0px;
+            right: 0px;
+            width: 150px; /* Adjust size as needed */
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .chatbot-image:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <nav class="navbar navbar-dark bg-black px-3">
+        <a class="navbar-brand" href="#">Your Trading Platform</a>
+        <div class="d-flex align-items-center">
+            <input type="text" class="form-control me-2" placeholder="Search stocks...">  
+            <i class="bi bi-bell me-3"></i>
+            <img src="mohan photo.jpg" alt="Profile" class="rounded-circle" width="30">
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-2 bg-dark text-light sidebar">
+                <ul class="nav flex-column p-3">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-bar-chart"></i> Market Data</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-wallet2"></i> Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-list-ul"></i> Transactions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-graph-up"></i> Analytics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-people"></i> Community</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-newspaper"></i> News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-star"></i> Watchlist</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-book"></i> Trader Diary</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-wallet"></i> Money</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-moon-stars"></i> Theme</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-8 p-4">
+                <!-- Overview Section -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="card bg-danger text-light">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="bi bi-graph-up overview-icon"></i> Sensex
+                                </h5>
+                                <h3>55,000</h3>
+                                <p>+1.05%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-primary text-light">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="bi bi-bar-chart-line overview-icon"></i> Nifty
+                                </h5>
+                                <h3>16,500</h3>
+                                <p>-0.22%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-purple text-light">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="bi bi-bank overview-icon"></i> Nifty Bank
+                                </h5>
+                                <h3>35,000</h3>
+                                <p>+0.30%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Investments Section -->
+            <div class="col-md-2 investments-section">
+                <div class="card">
+                    <div class="card-header bg-dark text-light">
+                        <h5>Investments</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Tesla</span> <span>$750 <small class="text-success">+1.25%</small></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Apple</span> <span>$150 <small class="text-danger">-0.50%</small></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Amazon</span> <span>$3,400 <small class="text-danger">-0.30%</small></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Chatbot Image -->
+    <img src="parth-removebg-preview.png" id="chatbotToggle" class="chatbot-image" alt="Chatbot Icon">
+
+    <!-- Chatbot Modal -->
+    <div class="chat-modal" id="chatbot">
+        <div class="chat-header">
+            <span>ParthAI</span>
+            <button id="closeChat" class="btn btn-close btn-close-white"></button>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="bot-message">>Hello! I'm Parthai! How can I assist you with your stock market queries today?</div>
+        </div>
+        <input type="text" id="userInput" class="chat-input" placeholder="Type your message...">
+    </div>
+    <div class="chatbot-name" style="position: fixed; bottom: 0px; right: 50px; color: #ffffff; font-size: 14px;">
+        Parth ai
+    </div>
+
+
+    <script>
+        const chatbotToggle = document.getElementById('chatbotToggle');
+        const chatbot = document.getElementById('chatbot');
+        const closeChat = document.getElementById('closeChat');
+
+        chatbotToggle.addEventListener('click', () => {
+            chatbot.style.display = 'flex'; // Show the chatbot modal
+        });
+
+        closeChat.addEventListener('click', () => {
+            chatbot.style.display = 'none'; // Hide the chatbot modal
+        });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

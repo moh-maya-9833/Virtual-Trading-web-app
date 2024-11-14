@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Trading Login</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Body and Background */
+        body {
+            display: flex;
+            justify-content: flex-start; /* Align to the left */
+            align-items: center;
+            height: 100vh;
+            background: url(login\ background1.avif) no-repeat center center/cover;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        /* Login Container */
+        .login-container {
+            width: 400px;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.85);
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+            margin-left: 50px;
+        }
+
+        /* Header */
+        .login-container h1 {
+            font-size: 26px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .login-container p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #b3b3b3;
+        }
+
+        /* Input Fields */
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 14px;
+        }
+
+        /* Button Styles */
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .button {
+            flex: 1;
+            padding: 14px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            color: #fff;
+            transition: background 0.3s;
+        }
+
+        .create-button {
+            background: #00aaff;
+        }
+
+        .create-button:hover {
+            background: #0088cc;
+        }
+
+        .signin-button {
+            background: #00cc66;
+        }
+
+        .signin-button:hover {
+            background: #00994c;
+        }
+
+        /* Skip for Now Button */
+        .skip-button {
+            display: block;
+            margin-top: 15px;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            background: transparent;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .skip-button:hover {
+            color: #dddddd;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .login-container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .login-container h1 {
+                font-size: 22px;
+            }
+
+            .login-container p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Container -->
+    <div class="login-container">
+        <h1>Take me Ahead</h1>
+        <p>Buy, Sell, and Trade Anytime</p>
+        
+        <form>
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+        </form>
+        
+        <div class="button-container">
+            <button class="button create-button">Create Account</button>
+            <button class="button signin-button">Log in/Sign In</button>
+        </div>
+        
+        <!-- Skip for Now Button -->
+        <a  href="marketselection.html"> <button class="skip-button">skip for now</button></a>
+    </div>
+</body>
+</html>
+

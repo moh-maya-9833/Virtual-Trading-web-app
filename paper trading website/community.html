@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Feed Panel</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f5f7;
+            color: #333;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: white;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-top: 60px;
+            border-right: 1px solid #ddd;
+            overflow-y: auto;
+        }
+
+        .club-list {
+            padding: 20px;
+        }
+
+        .club-item {
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .club-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .club-item.active {
+            background-color: #e3f2e4;
+            color: #4caf50;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #e7e7e7;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar .logo {
+            color: #000000;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li a {
+            color: #010101;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+            margin-left: 15px;
+        }
+
+        .navbar ul li a:hover {
+            color: #ddd;
+            padding: 8px 12px;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            width: calc(100% - 250px);
+            padding: 80px 20px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .feed-container {
+            width: 60%;
+            max-width: 800px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .club-header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .club-header h2 {
+            color: #4caf50;
+            font-size: 1.5rem;
+        }
+
+        .new-post {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .new-post textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            resize: none;
+        }
+
+        .new-post input[type="file"] {
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .new-post button {
+            padding: 10px 15px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .new-post button:hover {
+            background-color: #45a049;
+        }
+
+        .post {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .post h3 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #4caf50;
+        }
+
+        .post p {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .post img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .post-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .like-comment-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .like-comment-buttons button {
+            border: none;
+            background: none;
+            color: #4caf50;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .like-comment-buttons button:hover {
+            color: #388e3c;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="#" class="logo">Logo</a>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#trade">Trade</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#account">Account</a></li>
+        </ul>
+    </nav>
+
+    <!-- Sidebar with Clubs -->
+    <div class="sidebar">
+        <div class="club-list">
+            <div class="club-item active" onclick="switchClub('general')">General Feed</div>
+            <div class="club-item" onclick="switchClub('trading')">Trading Beginners Q and A</div>
+            <div class="club-item" onclick="switchClub('mutual-funds')">Mutual Fund Investing</div>
+            <div class="club-item" onclick="switchClub('humor')">Markets Humor</div>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Feed Container -->
+        <div id="feedContainer" class="feed-container">
+            <!-- Club Header -->
+            <div class="club-header">
+                <h2 id="currentClub">General Feed</h2>
+            </div>
+
+            <!-- New Post Section -->
+            <div class="new-post">
+                <textarea id="newPostContent" rows="3" placeholder="What's on your mind?"></textarea>
+                <input type="file" id="newPostImage" accept="image/*">
+                <button onclick="createPost()">Post</button>
+            </div>
+
+            <!-- Feed Posts -->
+            <div id="feed">
+                <!-- Posts will be added here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle creating posts with optional image
+        function createPost() {
+            const postContent = document.getElementById("newPostContent").value;
+            const imageInput = document.getElementById("newPostImage");
+
+            if (!postContent && !imageInput.files.length) {
+                alert("Please add some text or upload an image.");
+                return;
+            }
+
+            // Create a new post element
+            const post = document.createElement("div");
+            post.className = "post";
+
+            // Post content
+            const postText = document.createElement("p");
+            postText.textContent = postContent;
+            post.appendChild(postText);
+
+            // Image preview (if an image was selected)
+            if (imageInput.files.length > 0) {
+                const image = document.createElement("img");
+                image.src = URL.createObjectURL(imageInput.files[0]);
+                image.onload = () => URL.revokeObjectURL(image.src);  // Free memory
+                post.appendChild(image);
+            }
+
+            // Add post to feed
+            document.getElementById("feed").prepend(post);
+
+            // Clear input fields
+            document.getElementById("newPostContent").value = "";
+            imageInput.value = "";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,270 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  /* Navbar */
+  nav {
+    background-color: #333;
+    color: white;
+    padding: 10px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  nav .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+  }
+  
+  nav ul li {
+    margin-right: 20px;
+  }
+  
+  nav ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Hero Section */
+  .hero {
+    background-image: url('stock\ market\ background.webp');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.8rem;
+    text-align: center;
+  }
+  
+  .cta-button {
+    background-color: #ff6600;
+    padding: 5px 30px;
+    color: white;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  
+  .cta-button:hover {
+    background-color: #ff4500;
+  }
+  
+  /* Market Overview */
+  .market-overview {
+    padding: 50px;
+    text-align: center;
+    background-color: #fff;
+  }
+  
+  .market-overview h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .market-data {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .market-card {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    width: 200px;
+    text-align: center;
+  }
+  
+  .market-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  /* Dashboard */
+  .dashboard {
+    display: flex;
+    padding: 50px;
+  }
+  
+  aside {
+    width: 20%;
+    padding: 20px;
+  }
+  
+  aside ul {
+    list-style: none;
+  }
+  
+  aside ul li {
+    margin-bottom: 15px;
+  }
+  
+  aside ul li a {
+    color: #333;
+    font-size: 1.1rem;
+  }
+  
+  aside ul li a:hover {
+    color: #ff6600;
+  }
+  
+  main {
+    width: 80%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+  
+  .virtual-balance {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .search-bar {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .search-bar input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .search-bar button {
+    padding: 10px 20px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .search-bar button:hover {
+    background-color: #ff4500;
+  }
+  
+  /* Stock Chart */
+  .stock-chart {
+    margin-bottom: 20px;
+  }
+  
+  .chart-container {
+    background-color: #f4f4f4;
+    padding: 30px;
+    border-radius: 5px;
+    height: 250px;
+  }
+  
+  /* Buy/Sell Section */
+  .buy-sell {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .buy-sell h2 {
+    margin-bottom: 10px;
+  }
+  
+  .buy-sell label {
+    font-size: 1.1rem;
+  }
+  
+  .buy-sell input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .buy-button, .sell-button {
+    width: 48%;
+    padding: 10px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .buy-button:hover, .sell-button:hover {
+    background-color: #ff4500;
+  }
+  
+  /* Portfolio Table */
+  .portfolio {
+    padding: 50px;
+    text-align: center;
+  }
+  
+  .portfolio-overview {
+    margin-bottom: 30px;
+    text-align: left;
+    font-size: 1.2rem;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 50px;
+  }
+  
+  table, th, td {
+    border: 1px solid #ddd;
+    padding: 15px;
+  }
+  
+  th {
+    background-color: #f4f4f4;
+  }
+  
+  tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #fff;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  

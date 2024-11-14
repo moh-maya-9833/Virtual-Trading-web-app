@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Trading Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General reset and styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            color: #fff;
+            background-color: #0f0f0f;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            font-size: 1.1rem;
+            position: relative;
+        }
+        .navbar .logo {
+            font-size: 1.5rem;
+            color: #ffffff;
+        }
+        .navbar-center {
+            display: flex;
+            gap: 40px;
+        }
+        .navbar-center a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .navbar-center a:hover {
+            color: #3477f7;
+        }
+        .navbar .cta-button {
+            background: #ffffff;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+        .navbar .cta-button:hover {
+            background: #e0e0e0;
+        }
+
+        /* Main Section */
+        .main-section {
+            text-align: center;
+            padding: 100px 0;
+            background: url(stock\ market\ background.webp) center no-repeat;
+            background-size: cover;
+        }
+        .main-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        .main-section h1 span {
+            color: #3477f7;
+        }
+        .main-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
+        .main-section .learn-more {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #3477f7;
+            color: #fff;
+            font-size: 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        /* Process Flow */
+        .process-flow {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 80px 0;
+        }
+        .step {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 150px;
+        }
+        .step h3 {
+            color: #3477f7;
+            margin-bottom: 10px;
+        }
+        .step i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #3477f7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .process-flow {
+                flex-direction: column;
+            }
+            .main-section h1 {
+                font-size: 2.5rem;
+            }
+            .navbar-center {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="container">
+        <div class="navbar">
+            <!-- Left logo -->
+            <div class="logo">Paper trading</div>
+
+            <!-- Centered links -->
+            <div class="navbar-center">
+                <a href="#">Activities</a>
+                <a href="#">Technology</a>
+                <a href="#">R&D</a>
+                <a href="#">Community</a>
+            </div>
+
+            <!-- Right aligned button -->
+            <a href="login.html" class="cta-button">New User &#8599;</a>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <section class="main-section container">
+        <h1>Experience Trading <span>Risk-Free</span></h1>
+        <p>Practice real-time trading with virtual funds on live market data.</p>
+        <a href="login.html" class="learn-more">start Trading</a>
+    </section>
+
+    <!-- Process Flow Section -->
+    <section class="container">
+        <div class="process-flow">
+            <div class="step">
+                <i class="fas fa-user-plus"></i>
+                <h3>Create Account</h3>
+                <p>Sign up to get started.</p>
+            </div>
+            <div class="step">
+                <i class="fas fa-chart-line"></i>
+                <h3>Learn Strategies</h3>
+                <p>Explore different trading strategies.</p>
+            </div>
+            <div class="step">
+                <i class="fas fa-play-circle"></i>
+                <h3>Start Trading</h3>
+                <p>Begin trading with virtual funds.</p>
+            </div>
+            <div class="step">
+                <i class="fas fa-trophy"></i>
+                <h3>Track Performance</h3>
+                <p>Review your trading progress.</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
